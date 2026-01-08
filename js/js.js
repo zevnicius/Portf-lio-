@@ -32,3 +32,10 @@ for (let i = 0; i < STAR_COUNT; i++) {
   sky.appendChild(star);
 }
 
+document
+  .querySelector(".scroll-star-vertical")
+  .addEventListener("click", () => {
+    document.querySelector("#about").scrollIntoView({
+      behavior: "smooth"
+    });
+  });
