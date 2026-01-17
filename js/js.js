@@ -1,57 +1,95 @@
-const sky = document.querySelector(".sky");
+const sky = document.querySelector('.sky');
+const STAR_COUNT = 200;
 
-const STAR_COUNT = 250;
-
-/* Função aleatória */
-function random(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-/* Cria estrelas fixas */
 for (let i = 0; i < STAR_COUNT; i++) {
-  const star = document.createElement("div");
-  star.classList.add("star");
+  const star = document.createElement('span');
+  star.classList.add('star');
 
-  /* Posição fixa */
-  star.style.left = `${random(0, window.innerWidth)}px`;
-  star.style.top = `${random(0, window.innerHeight)}px`;
-
-  /* Brilho aleatório */
-  star.style.setProperty("--min", random(0.1, 0.4));
-  star.style.setProperty("--max", random(0.6, 1));
-
-  /* Ritmo de brilho */
-  star.style.animationDuration = `${random(2, 6)}s`;
-  star.style.animationDelay = `${random(0, 5)}s`;
-
-  /* Tamanho variado */
-  const size = random(1, 3);
+  const size = Math.random() * 2 + 1;
   star.style.width = `${size}px`;
   star.style.height = `${size}px`;
+
+  star.style.top = `${Math.random() * 100}vh`;
+  star.style.left = `${Math.random() * 100}vw`;
+
+  star.style.setProperty('--min', Math.random() * 0.2);
+  star.style.setProperty('--max', Math.random() * 0.8 + 0.2);
+  star.style.animationDuration = `${Math.random() * 3 + 2}s`;
 
   sky.appendChild(star);
 }
 
 
-/* Scroll para a seção Sobre */
-document
-  .querySelector(".scroll-star-vertical")
-  .addEventListener("click", () => {
-    document.querySelector("#about").scrollIntoView({
-      behavior: "smooth"
+/* METEORO SCROLL */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  document.querySelectorAll('.meteor-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.querySelector(btn.dataset.target);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 
-/* Scroll para a seção Projetos */
+  const sections = document.querySelectorAll('section');
 
-const meteorBtn = document.querySelector(".meteor-btn");
+  let activeSection = null;
 
-meteorBtn.addEventListener("click", () => {
-    const projectsSection = document.querySelector("#projects");
+  const observer = new IntersectionObserver(
+    entries => {
 
-    if (projectsSection) {
-        projectsSection.scrollIntoView({
-            behavior: "smooth"
-        });
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeSection = entry.target;
+        }
+      });
+
+      if (!activeSection) return;
+
+      sections.forEach(section => {
+        const btn = section.querySelector('.meteor-scroll');
+        if (btn) btn.classList.add('hidden');
+      });
+
+      const activeBtn = activeSection.querySelector('.meteor-scroll');
+      if (activeBtn) activeBtn.classList.remove('hidden');
+
+    },
+    {
+      threshold: 0.35
     }
+  );
+
+  sections.forEach(section => observer.observe(section));
+
+});
+
+
+//Tabela
+
+const rows = document.querySelectorAll('.project-row');
+const previewImage = document.getElementById('previewImage');
+const defaultImage = previewImage.src;
+
+function changeImage(src) {
+  previewImage.style.opacity = 0;
+  previewImage.style.transform = 'scale(1.02)';
+
+  setTimeout(() => {
+    previewImage.src = src;
+    previewImage.style.opacity = 1;
+    previewImage.style.transform = 'scale(1)';
+  }, 300);
+}
+
+rows.forEach(row => {
+  row.addEventListener('mouseenter', () => {
+    changeImage(row.dataset.image);
+  });
+});
+
+document.querySelector('.project-table').addEventListener('mouseleave', () => {
+  changeImage(defaultImage);
 });

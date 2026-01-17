@@ -8,11 +8,8 @@
 </head>
 
 <body id="top">
-    <div class="sky">
         <header class="header">
-            
             <div class="header-content">
-                
                 <div class="logo">
                     <a href="#top" class="logo-link">
                         <h1>José Moreira</h1>
@@ -22,40 +19,37 @@
                 <nav class="nav-menu">
                     <ul class="nav-list">
                         <li><a href="#about">Sobre</a></li>
-                        <li><a href="#">Projetos</a></li>
-                        <li><a href="#">Contato</a></li>
-                    </ul>
-                </nav>
+                        <li><a href="#projects">Projetos</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                        </ul>
+                    </nav>
             </div>
-
         </header>
+    <div class="sky"></div>
         <main>
 
-            <section class="home-content">
+            <section id="home" class="home-content" aria-label="Seção inicial do portfólio">
             
-            <div class="home-row">
+                <div class="home-row">
 
-                <div class="home-left">
-                    <h1>Full Stack</h1>
-                    <h2>Developer</h2>
-                        <p>Em desenvolvimento</p>
+                    <div class="home-left">
+                        <h1>Full Stack</h1>
+                        <h2>Developer</h2>
+                            <p>Em desenvolvimento</p>
+                    </div>
+
+                    <div class="home-right">
+                        <p>Desenvolvedor em formação pela Code Academy Alpha EdTech, 
+                            com ênfase na construção de interfaces acessíveis, semanticamente, 
+                            estruturadas e centradas na experiência do usuário.
+                        </p>
+                    </div>
+
                 </div>
 
-                <div class="home-right">
-                    <p>Desenvolvedor em formação pela Code Academy Alpha EdTech, 
-                        com ênfase na construção de interfaces acessíveis, semanticamente, 
-                        estruturadas e centradas na experiência do usuário.
-                    </p>
+                <div class="meteor-scroll">
+                    <button class="meteor-btn" data-target="#about" aria-label="Ir para seção sobre"></button>
                 </div>
-
-            </div>
-
-                <div class="scroll-container">
-                    <button class="scroll-star-vertical" aria-label="Ir para próxima seção">
-                        <span class="star-vertical"></span>
-                    </button>
-                </div>
-
             </section>
 
             <section id="about" class="about-content" aria-label="Sobre o desennvolvedor">
@@ -92,12 +86,69 @@
                 </div>
 
                 <div class="meteor-scroll">
-                    <button class="meteor-btn" aria-label="Ir para projetos"></button>
+                    <button class="meteor-btn" data-target="#projects" aria-label="Ir para projetos"></button>
                 </div>
-                
             </section>
-        </main>
-    </div>
-  <script src="./js/js.js"></script>
+
+            <section id="projects" class="projects" aria-label="Projetos desenvolvidos">
+                    
+                <h2>Projetos</h2>
+
+                <div class="projects-content">
+                
+                    <div class="project-preview">
+                        <img id="previewImage" src="img/Prj.png" alt="Preview do projeto">
+                    </div>
+
+                    <div class="project-table">
+
+                        <div class="project-row" data-image="img/Prj1.png">
+                            <span><a href="#">PROPOSAL</a></span>
+                        </div>
+
+                        <div class="project-row" data-image="img/Prj2.png">
+                            <span><a href="#">CURIOSIDADES WORMS</a></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="meteor-scroll">
+                    <button class="meteor-btn" data-target="#contact" aria-label="Voltar ao topo"></button>
+                </div>
+            </section>
+
+            <section id="contact" class="contact" aria-label="Seção de contato">
+                
+                <h2>Contato</h2>
+
+                <div class="contact-content">
+
+                    <div class="avatar">
+                        <img src="/img/Avt-contact.png" alt="Avatar de José Moreira">
+                    </div>
+
+                    <div class="contact-table">
+                        <ul class="table">
+
+                            <li><a href="#"><img src="/img/e-mail.png"><span>E-mail</span></a></li>
+                            <li><a href="#"><img src="/img/GitHub.png"><span>GitHub</span></a></li>
+                            <li><a href="#"><img src="/img/Link.png"><span>LinkedIn</span></a></li>
+                            <li><a href="#"><img src="/img/Whats.png"><span>WhatsApp</span></a></li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+        <script src="./js/js.js"></script>
+    </div>    
+    </main>
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-text">© 2026 José Moreira</p>
+            </div>
+        </footer>
 </body>
 </html>
