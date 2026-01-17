@@ -32,6 +32,8 @@ for (let i = 0; i < STAR_COUNT; i++) {
   sky.appendChild(star);
 }
 
+
+/* Scroll para a seção Sobre */
 document
   .querySelector(".scroll-star-vertical")
   .addEventListener("click", () => {
@@ -39,3 +41,17 @@ document
       behavior: "smooth"
     });
   });
+
+/* Scroll para a seção Projetos */
+
+const meteorBtn = document.querySelector(".meteor-btn");
+
+meteorBtn.addEventListener("click", () => {
+    const projectsSection = document.querySelector("#projects");
+
+    if (projectsSection) {
+        projectsSection.scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+});
