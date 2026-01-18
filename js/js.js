@@ -93,3 +93,20 @@ rows.forEach(row => {
 document.querySelector('.project-table').addEventListener('mouseleave', () => {
   changeImage(defaultImage);
 });
+
+/* HAMBURGER MENU */
+const hamburger = document.querySelector(".hamburger");
+const navList = document.querySelector(".nav-list");
+const navLinks = document.querySelectorAll(".nav-list a");
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  navList.classList.toggle("active");
+});
+
+navLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navList.classList.remove("active");
+  });
+});
