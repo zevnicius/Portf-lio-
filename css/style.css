@@ -234,7 +234,12 @@ body {
 .home-right p {
   font-size: var(--font-body);
   color: var(--text-secondary);
-  text-align: right;
+}
+
+/* Justify text only for the long description in Home Right */
+.home-right p {
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 /* Meteor Scroll Button */
@@ -508,9 +513,8 @@ body {
 
 .contact-table a:hover img {
   filter:
-    drop-shadow(0 0 6px rgba(122, 162, 255, 0.6))
-    drop-shadow(0 0 12px rgba(122, 162, 255, 0.4));
-  
+    drop-shadow(0 0 6px rgba(122, 162, 255, 0.6)) drop-shadow(0 0 12px rgba(122, 162, 255, 0.4));
+
   transform: scale(1.08);
 }
 
@@ -575,6 +579,14 @@ body {
     flex-direction: column;
   }
 
+  /* Reset text alignment for mobile to avoid gaps */
+  .home-right p {
+    text-align: left;
+    /* or center, trusting inheritance if center was intended */
+    text-align: center;
+    /* Matching the general mobile center alignment */
+  }
+
   .home-right {
     order: 2;
   }
@@ -632,9 +644,8 @@ body {
       align-items: center;
     }
   }
-}
 
-@media (max-width: 767px) {
+  /* Merged styles from max-width: 767px */
   .project-preview {
     display: none;
   }
